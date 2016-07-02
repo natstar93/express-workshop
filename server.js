@@ -1,18 +1,17 @@
 import express from 'express';
+import bodyParser from 'body-parser';
 const app = express();
 
-app.get('/', (req, res) => {
-	res.send('Noooodeeeeeee!!');
+app.use(express.static("public"));
+
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.post('/create-post', (req, res) => {
+	res.redirect('/');
 });
-
-app.get('/node', (req, res) => {
-	res.send('node');
-})
-
-app.get('/girls', (req, res) => {
-	res.send('girls');
-})
 
 app.listen(3000, () => {
 	console.log('Listening on 3000');
 });
+
+module.exports = app;
