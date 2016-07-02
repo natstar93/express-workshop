@@ -3,6 +3,10 @@ import bodyParser from 'body-parser';
 import fs from 'fs';
 const app = express();
 
+app.get('/get-posts', (req, res) => {
+  res.sendFile(__dirname + '/data/posts.json');
+});
+
 app.use(express.static("public"));
 
 app.use(bodyParser.urlencoded({ extended: true }));
